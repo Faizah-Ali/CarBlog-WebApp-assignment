@@ -1,15 +1,43 @@
-import styles from '@/styles/PostDetail.module.css'
-import CategorySection from '@/components/CategorySection'
+// src/app/posts/[id]/page.tsx
+import Image from 'next/image';
+import styles from '@/styles/PostDetail.module.css';
+import CategorySection from '@/components/CategorySection'; // Ensure this path is correct
 
+// CORRECTED INTERFACE: Added searchParams
 interface PostDetailProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-async function getPost(id: string) {
-  const post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res => res.json())
-  const user = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`).then(res => res.json())
+// Define interfaces for API data to avoid 'any' if not defined globally
+interface Post {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+}
+
+interface User {
+  id: number;
+  name: string;
+}
+
+// Define the structure of the enriched post data for this component
+interface PostData {
+  id: number;
+  title: string;
+  body: string;
+  author: string;
+  date: string;
+  time: string;
+  imageUrl: string;
+}
+
+async function getPost(id: string): Promise<PostData> {
+  const post: Post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res => res.json());
+  const user: User = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`).then(res => res.json());
 
   return {
     ...post,
@@ -17,15 +45,23 @@ async function getPost(id: string) {
     date: 'Jan 10, 2024',
     time: '3 Min Read',
     imageUrl:`https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&height=600&width=1200&fit=bounds`
-  }
+  };
 }
 
-export default async function PostDetail({ params }: PostDetailProps) {
-  const post = await getPost(params.id)
+// FIX: Prefix searchParams with an underscore to mark it as intentionally unused
+export default async function PostDetail({ params, searchParams: _searchParams }: PostDetailProps) {
+  const post = await getPost(params.id);
 
   return (
     <div className={styles.wrapper}>
-      <img src={post.imageUrl} className={styles.coverImage} alt={post.title} />
+      <Image
+        src={post.imageUrl}
+        alt={post.title}
+        width={1140}
+        height={600}
+        className={styles.coverImage}
+        priority
+      />
 
       <h1 className={styles.heading}>{post.title}</h1>
 
@@ -45,7 +81,7 @@ export default async function PostDetail({ params }: PostDetailProps) {
 
   <h2>Future Roads: Sustainable Mobility & Possibilities</h2>
   <p>
-    Future transport considers smart infrastructure and new ownership models. Vehicles will be interconnected ecosystem components, emphasizing sustainable materials and closed-loop manufacturing to reduce environmental impact.
+    Future transport considers smart infrastructure and new ownership models. Vehicles will be interconnected ecosystem components, emphasizing sustainable materials and and closed-loop manufacturing to reduce environmental impact.
   </p>
 
   <p>
@@ -63,5 +99,5 @@ export default async function PostDetail({ params }: PostDetailProps) {
 
       <CategorySection />
     </div>
-  )
+  );
 }

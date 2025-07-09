@@ -1,5 +1,6 @@
+// src/components/CategorySection.tsx
 import styles from '../styles/category.module.css';
-import Image from 'next/image';
+import Image from 'next/image'; // This import is correctly present and will now be used
 
 const categories = [
   {
@@ -31,7 +32,14 @@ export default function CategorySection() {
       <div className={styles.grid}>
         {categories.map((cat, idx) => (
           <div key={idx} className={styles.card}>
-            <img src={cat.image} className={styles.image} alt={cat.name} />
+            {/* Replaced <img> with <Image /> and added width, height */}
+            <Image
+              src={cat.image}
+              className={styles.image}
+              alt={cat.name}
+              width={70} // <--- Set width based on Category.module.css
+              height={70} // <--- Set height based on Category.module.css
+            />
             <h3>{cat.name}</h3>
             <p>{cat.desc}</p>
           </div>

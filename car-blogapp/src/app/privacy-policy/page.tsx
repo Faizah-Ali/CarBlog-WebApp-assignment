@@ -1,4 +1,4 @@
-import styles from '@/styles/about.module.css';
+import styles from '@/styles/about.module.css'; // Assuming 'about.module.css' is the correct path for privacy-policy page styling
 
 export default function PrivacyPolicyPage() {
   return (
@@ -51,10 +51,12 @@ export default function PrivacyPolicyPage() {
       </ul>
 
       <h2 className={styles.sectionTitle}>🔄 Changes to This Policy:</h2>
-      <p className={styles.sectionParagraph}>
-        We may update our Privacy Policy periodically. Any changes will be posted on this page with an updated "Last Modified" date. We encourage you to review this policy regularly.
+      <p className={styles.sectionParagraph} style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <i><b>Last Modified:</b> July 9, 2025.</i>
       </p>
 
+      {/* This line is the focus of the error. Ensure there are no invisible characters or actual quotes. */}
+      {/* It should appear exactly as below, without literal quotes around the date. */}
       <p className={styles.sectionParagraph} style={{ textAlign: 'center', marginTop: '3rem' }}>
         <i><b>Last Modified:</b> July 9, 2025.</i>
       </p>

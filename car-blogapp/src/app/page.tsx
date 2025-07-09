@@ -1,15 +1,40 @@
+// src/app/page.tsx
 import CarPostCard from '@/components/CarPostCard';
 import CategorySection from '@/components/CategorySection';
 import HeroSection from '@/components/HeroSection';
 import Testimonial from '@/components/Testimonial';
 import TrendingBlogs from '@/components/TrendingBlogs';
 
-async function getPosts() {
-  const posts = await fetch('https://jsonplaceholder.typicode.com/posts').then((res) => res.json());
-  const users = await fetch('https://jsonplaceholder.typicode.com/users').then((res) => res.json());
+// Define interfaces for the data fetched from JSONPlaceholder
+interface Post {
+  id: number;
+  userId: number; // Important for linking to users
+  title: string;
+  body: string;
+}
 
-  return posts.slice(0, 4).map((post: any) => {
-    const author = users.find((u: any) => u.id === post.userId);
+interface User {
+  id: number;
+  name: string;
+  // You might add other user properties if you use them, e.g., email, username
+}
+
+// Define the structure of the enriched post data that CarPostCard expects
+interface EnrichedPost {
+  id: number;
+  title: string;
+  body: string;
+  author: string;
+  imageUrl: string;
+}
+
+async function getPosts(): Promise<EnrichedPost[]> { // Explicitly define return type
+  // Use specific types instead of 'any'
+  const posts: Post[] = await fetch('https://jsonplaceholder.typicode.com/posts').then((res) => res.json());
+  const users: User[] = await fetch('https://jsonplaceholder.typicode.com/users').then((res) => res.json());
+
+  return posts.slice(0, 4).map((post: Post) => { // Specify 'post' as Post type
+    const author = users.find((user: User) => user.id === post.userId); // Specify 'user' as User type
     let imageUrl = '';
 
     if (post.id === 1) imageUrl = '/TrendingBlogs4.png';
@@ -22,7 +47,7 @@ async function getPosts() {
       id: post.id,
       title: post.title,
       body: post.body,
-      author: author?.name || 'Unknown',
+      author: author?.name || 'Unknown', // Safely access author name
       imageUrl
     };
   });
@@ -35,14 +60,14 @@ export default async function Home() {
     <>
       <HeroSection />
       <div id='trending'>
-<TrendingBlogs />
+        <TrendingBlogs />
       </div>
-      
+
       <CategorySection />
       <Testimonial />
 
       {/* Pass posts array as props */}
-      <CarPostCard posts={posts} />  
+      <CarPostCard posts={posts} />
     </>
   );
 }

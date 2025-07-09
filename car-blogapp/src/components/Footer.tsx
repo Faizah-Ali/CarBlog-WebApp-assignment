@@ -1,5 +1,6 @@
-import styles from '@/styles/Footer.module.css'
- import Image from 'next/image';
+// src/components/Footer.tsx
+import styles from '@/styles/Footer.module.css';
+import Image from 'next/image'; // This import is correctly present and will now be used
 
 export default function Footer() {
   return (
@@ -8,11 +9,13 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.logoSection}>
             <div className={styles.logoCircle}>
-             
-            <img
-              src="/logo.png" 
-              alt="Company Logo"
-            />
+              {/* Replaced <img> with <Image /> and added width, height */}
+              <Image
+                src="/logo.png"
+                alt="Company Logo"
+                width={60} // <--- Set width based on Footer.module.css
+                height={55} // <--- Set height based on Footer.module.css
+              />
             </div>
             <span><b><i>REGAL RIDES</i></b></span>
           </div>
@@ -36,7 +39,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p>Finstreet 118 2561 abctown</p>
-          <p>example@email.com  001 21345 442</p>
+          <p>example@email.com 001 21345 442</p>
           <div className={styles.socials}>
             <span>📘</span>
             <span>🐦</span>
@@ -46,5 +49,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

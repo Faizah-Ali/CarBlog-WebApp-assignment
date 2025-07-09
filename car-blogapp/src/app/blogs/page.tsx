@@ -1,50 +1,75 @@
-import BlogListCard from '@/components/BlogListCard'
-import HeroSectionV2 from '@/components/HeroSectionV2'
+// src/app/blogs/page.tsx
 
-async function getAllPosts() {
-  const posts = await fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json())
-  const users = await fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
+import BlogListCard from '@/components/BlogListCard';
+import HeroSectionV2 from '@/components/HeroSectionV2'; // Ensure correct path if HeroSectionV2 is in a subfolder
 
-  return posts.map((post: any) => {
-    const author = users.find((u: any) => u.id === post.userId)
+// Define interfaces for the data fetched from JSONPlaceholder
+interface Post {
+  id: number;
+  userId: number; // Important for linking to users
+  title: string;
+  body: string;
+}
+
+interface User {
+  id: number;
+  name: string;
+  // You might add other user properties if you use them, e.g., email, username
+}
+
+// Define the structure of the enriched post data that BlogListCard expects
+interface EnrichedPost {
+  id: number;
+  title: string;
+  body: string;
+  author: string;
+  date: string;
+  time: string;
+  imageUrl: string;
+}
+
+async function getAllPosts(): Promise<EnrichedPost[]> { // Explicitly define return type
+  const posts: Post[] = await fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json());
+  const users: User[] = await fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
+
+  return posts.map((post: Post) => { // Specify 'post' as Post type
+    const author = users.find((user: User) => user.id === post.userId); // Specify 'user' as User type
     return {
       id: post.id,
       title: post.title,
       body: post.body,
-      author: author?.name || 'Unknown',
+      author: author?.name || 'Unknown', // Safely access author name
       date: 'Jan 10, 2024',
       time: '3 Min Read',
+      // Note: Using a static image URL here. Consider making it dynamic or from your public folder.
       imageUrl: `https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&height=600&width=1200&fit=bounds`
-    }
-  })
+    };
+  });
 }
 
-export default async function blogs() {
-  const posts = await getAllPosts()
+export default async function BlogsPage() { // Renamed 'blogs' to 'BlogsPage' for convention, but 'blogs' is fine
+  const posts = await getAllPosts();
 
   return (
     <>
-    <HeroSectionV2/>
-     <main style={{
-        maxWidth: '1140px', 
-        margin: '1rem auto', 
-        padding: '1rem', 
-        backgroundColor: '#fff', 
-        borderRadius: '8px', 
-       
+      <HeroSectionV2/>
+      <main style={{
+        maxWidth: '1140px',
+        margin: '1rem auto',
+        padding: '1rem',
+        backgroundColor: '#fff',
+        borderRadius: '8px',
       }}>
-     <h1 style={{
-          fontSize: '2.5rem', 
-          fontWeight: 'bold', 
-          marginBottom: '1.5rem', 
-          color: '#333' 
+        <h1 style={{
+          fontSize: '2.5rem',
+          fontWeight: 'bold',
+          marginBottom: '1.5rem',
+          color: '#333'
         }}>All Posts</h1>
-        {posts.map(post => (
+        {posts.map((post: EnrichedPost) => ( // Ensure map iteration variable has correct type
           <BlogListCard key={post.id} {...post} />
         ))}
       </main>
     </>
-  )
+  );
 }
-
-

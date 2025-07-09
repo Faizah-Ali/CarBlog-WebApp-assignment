@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.image {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.info {
+  flex: 1;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: gray;
+  margin: 0.5rem 0;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #e63946;
+  text-decoration: underline;
+}

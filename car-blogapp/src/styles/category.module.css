@@ -1,0 +1,121 @@
+.wrapper {
+  /* Remove fixed padding-left */
+  max-width: 1200px; /* Set a max-width for the content */
+  margin: 60px auto; /* Center the wrapper and add vertical margin */
+  padding: 0 20px; /* Add horizontal padding for smaller screens */
+  box-sizing: border-box; /* Include padding in element's total width/height */
+  /* height: 400px; Remove fixed height unless absolutely necessary */
+  
+  border-radius: 10px;
+  padding-bottom: 30px; /* Add some padding at the bottom of the section */
+}
+
+.heading {
+  font-size: 2.2rem;
+  padding-top: 25px;
+  margin-bottom: 30px; /* Add margin below the heading */
+  color: #333; /* Darker color for heading */
+  text-align: left; /* Center the heading */
+}
+
+.grid {
+  display: grid;
+  /* Reduced gap between cards */
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Default 4 columns */
+  gap: 1rem; /* Reduced gap */
+  justify-content: center; /* Center grid items if they don't fill the row */
+  align-items: start; /* Align items to the start of their grid area */
+}
+
+.card {
+  background: #FFFAE6; 
+ 
+  border-radius: 10px;
+  padding: 1.5rem 1rem; /* Slightly more vertical padding */
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Slightly stronger shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+  display: flex; /* Use flex for internal content alignment */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Ensure cards fill their grid cell vertically */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+}
+
+.image {
+  width: 70px; /* Slightly larger image */
+  height: 70px; /* Slightly larger image */
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+  border: 2px solid #FC4100; /* Add a subtle border */
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.card p {
+  font-size: 1.0rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(200px, 1fr)); /* 3 columns on medium screens */
+    gap: 1.2rem;
+  }
+  .heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr)); /* 2 columns on tablets */
+    gap: 1rem;
+  }
+  .wrapper {
+    padding: 40px 15px; /* Adjust padding */
+  }
+  .heading {
+    font-size: 1.8rem;
+  }
+  .image {
+    width: 60px;
+    height: 60px;
+  }
+  .card h3 {
+    font-size: 1.1rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 0.8rem;
+  }
+  .wrapper {
+    margin: 30px auto;
+    padding: 30px 15px;
+  }
+  .heading {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  .card {
+    padding: 1rem 0.8rem;
+  }
+}

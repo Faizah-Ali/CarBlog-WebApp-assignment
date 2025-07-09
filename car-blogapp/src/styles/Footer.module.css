@@ -1,0 +1,98 @@
+.footer {
+  background-color: #0A1D56;
+  color: #FFFAE6;
+  padding: 3rem 1rem;
+}
+
+.logoCircle img {
+  width: 60px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #FFFAE6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem; /* Example: if you put an icon/initials here */
+  color: #0A1D56; /* Color for content inside the circle */
+  font-weight: bold;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.links li {
+  cursor: pointer;
+}
+
+.newsletter {
+  margin: 2rem 0;
+}
+
+.newsletter h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  max-width: 600px;
+}
+
+.inputGroup {
+  display: flex;
+  max-width: 600px;
+}
+
+.inputGroup input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 8px 0 0 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.inputGroup button {
+  background-color: #FC4100;
+  color: #FFFAE6;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  font-weight: bold;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.socials span {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

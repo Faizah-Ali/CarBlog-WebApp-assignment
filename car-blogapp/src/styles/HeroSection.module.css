@@ -1,0 +1,147 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden; /* Hide overflow from image */
+  background: fixed;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container */
+  z-index: -1; /* Send it behind content */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  /* margin: 0 auto; */
+  margin-left: 360px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%; /* Ensure content aligns centrally vertically */
+}
+
+.heading {
+  font-size: 5.5rem; /* Larger font size */
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  max-width: 700px;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  max-width: 600px;
+  color: #ccc;
+  margin-left: 12px;
+}
+
+.subscribeButton {
+  background-color: #FC4100; /* Reddish color from image */
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin-left: 12px;
+  margin-bottom: 100px;
+}
+
+.subscribeButton:hover {
+  background-color: #fff;
+  color: #FC4100; /* Slightly darker on hover */
+  border: solid 2px #FC4100;
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  /* You might use an SVG or an icon font here. For simplicity,
+     we'll use a simple border trick or a unicode arrow. */
+  display: inline-block;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.arrowIcon:hover{
+    border: solid #FC4100;
+    border-width: 0 3px 3px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .heading {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    height: auto;
+    min-height: 70vh;
+    padding: 80px 0;
+  }
+
+  .heading {
+    font-size: 2.8rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .subscribeButton {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+
+  .subscribeButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

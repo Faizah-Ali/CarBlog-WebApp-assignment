@@ -1,0 +1,137 @@
+.header {
+  background-color: rgba(10, 29, 86, 0.9); /* Semi-transparent background */
+  padding: 1.5rem 0;
+  color: white;
+  /* Removed padding-left: 60px; from here. It will be handled by .container */
+
+  /* Glassy effect properties */
+  backdrop-filter: blur(10px); /* Adjust blur strength as needed */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+
+  position: sticky; /* Optional: make it stick to the top */
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px; /* Adjusted padding for responsiveness.
+                     This replaces the fixed 60px left padding from .header
+                     and adds consistent padding on both sides. */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1.5rem; /* Make logo slightly larger */
+  margin-left: 30px;
+}
+
+.circle img {
+  width: 60px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #FFFAE6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem; /* Example: if you put an icon/initials here */
+  color: #0A1D56; /* Color for content inside the circle */
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem; /* Adjusted font size for better balance */
+  transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.nav a:hover,
+.nav a.active {
+  font-weight: 700;
+  color: #FC4100; /* Highlight color on hover/active */
+  text-decoration: underline;
+}
+
+.subscribe {
+  background-color: white;
+  color: #1c1d2a;
+  padding: 0.8rem 1.8rem; /* Slightly larger button */
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; /* Smooth transition */
+  margin-right: 20px;
+  font-size: 1.1rem;
+}
+
+.subscribe:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    gap: 1rem;
+    padding: 0 15px; /* Smaller padding on mobile */
+  }
+
+  .nav {
+    flex-direction: column; /* Stack nav links vertically */
+    gap: 0.8rem;
+    width: 100%; /* Make nav take full width */
+    align-items: flex-start;
+  }
+
+  .nav a {
+    font-size: 1rem;
+  }
+
+  .subscribe {
+    width: 100%; /* Full width button on mobile */
+    text-align: center;
+    margin-top: 1rem; /* Space from nav */
+  }
+
+  .logo {
+    width: 100%; /* Ensure logo takes full width */
+    justify-content: center; /* Center logo on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem 0;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
+  .circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}

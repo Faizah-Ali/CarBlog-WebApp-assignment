@@ -152,8 +152,8 @@ const TrendingBlogs: React.FC = () => {
            
             isActive={activeTrendingId === blog.id || (activeTrendingId === null && blog.id === currentLatestBlog.id)}
         
-            imageUrl={undefined}
-            description={undefined}
+            // imageUrl={undefined}
+            // description={undefined}
           />
         ))}
       </div>

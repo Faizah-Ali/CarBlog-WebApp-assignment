@@ -1,26 +1,126 @@
 .container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 8px;
+  max-width: 1125px;
+  margin: 0.5rem auto; /* Increased margin for better spacing from top/bottom */
+  padding: 0.25rem; /* Slightly more padding */
+  background: #FFFAE6;
+  border-radius: 12px; /* Slightly more rounded corners */
   line-height: 1.7;
-  color: #333;
+  color: #000;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+  font-family: 'Inter', sans-serif; /* Consistent font family */
 }
 
 .heading {
-  font-size: 2rem;
+  font-size: 2.2rem; /* Larger heading */
+  margin-bottom: 1.5rem; /* More space below heading */
+  color: #000;
+  text-align: center; /* Center the main heading */
+  font-weight: 700; /* Bolder */
+}
+
+.introParagraph {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem; /* More space below intro */
+  text-align: center; /* Center the intro paragraph */
+  color: #000;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.sectionTitle {
+  font-size: 1.8rem; /* Prominent section titles */
+  margin-top: 2.5rem; /* More space above new sections */
   margin-bottom: 1rem;
-  color: #222;
+  color: #FC4100; /* Consistent brand red from previous components */
+  font-weight: 600; /* Semi-bold */
+  display: flex; /* Allow emoji and text to sit nicely */
+  align-items: center;
+  gap: 10px; /* Space between emoji and text */
+   margin-left: 53px;
+  margin-right: 53px;
+}
+
+.sectionParagraph {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #000;
+  margin-left: 100px;
+  margin-right: 53px;
 }
 
 .sectionList {
   list-style-type: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-left: 1.8rem; /* Slightly more indentation */
+  margin-bottom: 2rem; /* More space below lists */
+  color: #000; /* Consistent text color */
+   margin-left: 89px;
+ 
 }
 
-.sectionTitle {
-  margin-top: 2rem;
-  color: #e63946;
+.sectionList li {
+  margin-bottom: 0.8rem; /* Space between list items */
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .introParagraph {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    flex-direction: column; /* Stack emoji and title if necessary */
+    align-items: flex-start; /* Re-align if stacked */
+    gap: 5px;
+  }
+
+  .sectionParagraph {
+    font-size: 0.95rem;
+  }
+
+  .sectionList {
+    padding-left: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sectionList li {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    margin: 1.5rem 10px; /* Add horizontal margin on very small screens */
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .introParagraph {
+    font-size: 0.9rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
 }

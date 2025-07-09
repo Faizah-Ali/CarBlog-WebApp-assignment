@@ -1,89 +1,3 @@
-// 'use client'
-
-// import { useState } from 'react'
-// import styles from '@/styles/contact.module.css'
-
-// export default function ContactPage() {
-//   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-//   const [errors, setErrors] = useState<{ [key: string]: string }>({})
-
-//   const validate = () => {
-//     const newErrors: { [key: string]: string } = {}
-//     if (!form.name.trim()) newErrors.name = 'Name is required'
-//     if (!form.email.trim()) newErrors.email = 'Email is required'
-//     else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = 'Email is invalid'
-//     if (!form.subject.trim()) newErrors.subject = 'Subject is required'
-//     if (!form.message.trim()) newErrors.message = 'Message is required'
-//     return newErrors
-//   }
-
-//   const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault()
-//     const validationErrors = validate()
-//     if (Object.keys(validationErrors).length > 0) {
-//       setErrors(validationErrors)
-//     } else {
-//       alert('Message submitted successfully 🚀')
-//       setForm({ name: '', email: '', subject: '', message: '' })
-//       setErrors({})
-//     }
-//   }
-
-//   return (
-//     <div className={styles.wrapper}>
-//       <h1 className={styles.heading}>📬 Contact Us</h1>
-// <form onSubmit={handleSubmit} className={styles.form}>
-//   <div className={styles.field}>
-//     <label className={styles.label}>Name</label>
-//     <input
-//       type="text"
-//       value={form.name}
-//       onChange={e => setForm({ ...form, name: e.target.value })}
-//       className={styles.input}
-//     />
-//     {errors.name && <span className={styles.error}>{errors.name}</span>}
-//   </div>
-
-//   <div className={styles.field}>
-//     <label className={styles.label}>Email</label>
-//     <input
-//       type="email"
-//       value={form.email}
-//       onChange={e => setForm({ ...form, email: e.target.value })}
-//       className={styles.input}
-//     />
-//     {errors.email && <span className={styles.error}>{errors.email}</span>}
-//   </div>
-
-//   <div className={styles.field}>
-//     <label className={styles.label}>Subject</label>
-//     <input
-//       type="text"
-//       value={form.subject}
-//       onChange={e => setForm({ ...form, subject: e.target.value })}
-//       className={styles.input}
-//     />
-//     {errors.subject && <span className={styles.error}>{errors.subject}</span>}
-//   </div>
-
-//   <div className={styles.field}>
-//     <label className={styles.label}>Message</label>
-//     <textarea
-//       rows={4}
-//       value={form.message}
-//       onChange={e => setForm({ ...form, message: e.target.value })}
-//       className={styles.textarea}
-//     ></textarea>
-//     {errors.message && <span className={styles.error}>{errors.message}</span>}
-//   </div>
-
-//   <button type="submit" className={styles.submitBtn}>Submit</button>
-// </form>
-
-//     </div>
-//   )
-// }
-
 'use client';
 
 import Image from 'next/image';
@@ -91,6 +5,7 @@ import { useState } from 'react';
 import styles from '@/styles/contact.module.css';
 
 export default function CarRentalForm() {
+
   // Updated state to match the new form fields
   const [formData, setFormData] = useState({
     firstName: '',
@@ -119,7 +34,7 @@ export default function CarRentalForm() {
         return newErrors;
       });
     }
-    setStatusMessage(''); // Clear general status message on input change
+    setStatusMessage(''); 
   };
 
   // Updated validation logic for new fields
@@ -134,7 +49,7 @@ export default function CarRentalForm() {
     }
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = 'Phone Number is required';
-    } else if (!/^\+?\d{7,15}$/.test(formData.phoneNumber.trim())) { // Basic phone number regex
+    } else if (!/^\+?\d{7,15}$/.test(formData.phoneNumber.trim())) { 
       newErrors.phoneNumber = 'Invalid Phone Number';
     }
     if (!formData.emailAddress.trim()) {
@@ -161,28 +76,10 @@ export default function CarRentalForm() {
       return;
     }
 
-    // If validation passes, proceed with submission
-    setErrors({}); // Clear any previous errors
+    
+    setErrors({}); 
 
     try {
-      // Simulate API call
-      // In a real application, you would send this data to your backend API here
-      // Example:
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
-      //
-      // if (response.ok) {
-      //   setStatusMessage('Message sent successfully! We will get back to you soon.');
-      //   setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', message: '' }); // Clear form
-      // } else {
-      //   setStatusMessage('Failed to send message. Please try again.');
-      // }
-
       await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulate network delay
       setStatusMessage('Message submitted successfully! 🚀');
       setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', message: '' }); // Clear form
@@ -194,9 +91,9 @@ export default function CarRentalForm() {
   };
 
   return (
-    <section className={styles.rentalFormContainer}> {/* Reusing this container as it has the background */}
+    <section className={styles.rentalFormContainer}> 
       <Image
-        src="/HeroSection.png" // Path to your background image
+        src="/HeroSection.png" 
         alt="Car on a scenic road"
         layout="fill"
         objectFit="cover"
@@ -206,7 +103,7 @@ export default function CarRentalForm() {
       />
 
       <div className={styles.formCard}>
-        <h2 className={styles.formHeading}>📬 Contact Us</h2> {/* Updated heading */}
+        <h2 className={styles.formHeading}>📬 Contact Us</h2> 
         <form onSubmit={handleSubmit}>
           <div className={styles.formGrid}>
             {/* First Name */}
@@ -289,9 +186,9 @@ export default function CarRentalForm() {
               {errors.message && <p className={styles.errorMessage}>{errors.message}</p>}
             </div>
 
-          </div> {/* End of formGrid */}
+          </div> 
 
-          <button type="submit" className={styles.searchButton}> {/* Reusing searchButton style */}
+          <button type="submit" className={styles.searchButton}> 
             SUBMIT <span className={styles.arrowIcon}>&#9654;</span>
           </button>
           {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}

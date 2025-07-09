@@ -1,4 +1,4 @@
-/* CarPostCard.module.css */
+/* components/NewTechnologySection/NewTechnologySection.module.css */
 
 .wrapper {
   max-width: 1200px;
@@ -27,23 +27,30 @@
   text-decoration: none;
 }
 
-.grid {
+.seeAllLink:hover{
+  text-decoration: underline;
+}
+
+.grid { /* This corresponds to your .cardsGrid in the JS */
   display: grid;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 1.5rem;
+  /* Ensure grid items align at the start and stretch to fill row height */
+  align-items: stretch;
 }
 
-/* Reuse your existing styles */
+/* Corrected Card Styles */
 .card {
   background: #FFFAE6;
   border-radius: 10px;
-  padding-bottom: 1rem;
+  /* Removed padding-bottom: 1rem; because content will have its own padding */
   text-align: left;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
-  flex-direction: column;
-  height: 80%;
+  flex-direction: column; /* This is crucial for vertical stacking */
+  /* Remove 'height: 80%' - let the grid's align-items: stretch handle height consistency */
+  /* min-height can be added if you want a base height, e.g., min-height: 380px; */
 }
 
 .card:hover {
@@ -55,10 +62,14 @@
   width: 100%;
   height: 180px;
   object-fit: cover;
+  border-radius: 10px 10px 0 0; /* Match card border-radius */
 }
 
 .content {
   padding: 1rem;
+  display: flex; /* Make content a flex container */
+  flex-direction: column; /* Stack its children vertically */
+  flex-grow: 1; /* Allow content to grow and fill available space in the card */
 }
 
 .cardTitle {
@@ -66,16 +77,20 @@
   font-weight: bold;
   color: #000;
   margin-bottom: 0.5rem;
+  line-height: 1.3; /* Improve readability */
 }
 
 .description {
   color: #555;
   margin-bottom: 0.5rem;
+  flex-grow: 1; /* This makes the description take up all remaining space */
+  /* This pushes the elements below it (.author and .readMore) to the bottom */
 }
 
 .author {
   font-size: 0.9rem;
   color: #888;
+  margin-bottom: 0.5rem; /* Reduced margin here */
 }
 
 .readMore {
@@ -83,7 +98,8 @@
   color: #FC4100;
   text-decoration: none;
   display: inline-block;
-  margin-top: 0.5rem;
+  margin-top: auto; /* This magic property pushes the element to the bottom */
+  /* Replaced margin-top: 0.5rem; with auto */
 }
 
 /* Responsive Grid */

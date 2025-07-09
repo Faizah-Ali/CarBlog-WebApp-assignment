@@ -1,25 +1,25 @@
 .trendingBlogsContainer {
   max-width: 1200px;
   margin: 0px auto; /* Add margin top/bottom */
-  padding: 0 343px;
+  padding: 0 343px; /* Preserve for desktop as requested */
   display: flex;
   gap: 60px; /* Space between latest and trending sections */
   flex-wrap: wrap; /* Allow wrapping on smaller screens */
   font-family: 'Inter', sans-serif; /* Ensure consistent font */
   background-color: #FFFAE6;
-  height: 100%;
+  height: 100%; /* This might be problematic; prefer min-height or auto */
   margin-top: 0px;
   padding-top: 80px;
-  /* background: fixed; */
+  /* background: fixed; */ /* Preserve for desktop as requested */
 }
 
 .latestBlog {
   flex: 4; /* Takes more space */
   min-width: 200px; /* Minimum width before wrapping */
-  margin-left: 45px;
+  margin-left: 45px; /* Preserve for desktop as requested */
 }
 
-.trendingSidebar { /* Renamed from .trendingBlogs */
+.trendingSidebar {
   flex: 2; /* Takes less space */
   min-width: 280px; /* Minimum width before wrapping */
 }
@@ -106,6 +106,8 @@
   margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .trendingPost:last-child {
@@ -127,7 +129,8 @@
   line-height: 1.4;
 }
 
-/* Highlighted trending post */
+/* Highlighted trending post (keep this if you want an initial static highlight) */
+/* This `.highlightedPost` is distinct from the `.active` state that reacts to clicks */
 .highlightedPost {
   background-color: #FC4100;
   color: #fff;
@@ -137,19 +140,46 @@
 }
 
 .highlightedPost .trendingPostMeta,
-.highlightedPost .trendingPostTitle {
+.highlightedPost .highlightedPost .trendingPostTitle { /* Corrected selector */
   color: #fff;
 }
 
+
+/* New style for active/selected trending post */
+.trendingPost.active {
+  background-color: #FC4100;
+  color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  /* Negative margins to visually extend the background without affecting layout */
+  margin-left: -20px;
+  margin-right: -20px;
+  border-bottom: none; /* Remove border when active */
+}
+
+.trendingPost.active .trendingPostMeta,
+.trendingPost.active .trendingPostTitle {
+  color: #fff;
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .trendingBlogsContainer { /* Renamed */
+  .trendingBlogsContainer {
     flex-direction: column; /* Stack columns on smaller screens */
-    gap: 60px; /* More space when stacked */
+    gap: 40px; /* Adjust gap when stacked */
+    padding: 0 40px; /* Adjust padding for tablets */
+    height: auto; /* Allow height to adjust to content */
   }
 
-  .latestBlog,
-  .trendingSidebar { /* Renamed */
+  .latestBlog {
+    flex: none; /* Remove flex basis */
+    width: 100%; /* Take full width */
+    min-width: unset; /* Remove min-width constraint */
+    margin-left: 0; /* Remove fixed margin-left */
+  }
+
+  .trendingSidebar {
     flex: none; /* Remove flex basis */
     width: 100%; /* Take full width */
     min-width: unset; /* Remove min-width constraint */
@@ -158,9 +188,22 @@
   .latestPostImage {
     height: 300px;
   }
+
+  /* Adjust active state for 1024px */
+  .trendingPost.active {
+    margin-left: -20px; /* Match padding adjustment */
+    margin-right: -20px;
+    /* On smaller screens, if the container padding changes, this might need re-evaluation */
+  }
 }
 
 @media (max-width: 768px) {
+  .trendingBlogsContainer {
+    padding: 0 20px; /* Further reduce padding for smaller tablets */
+    gap: 30px; /* Reduce gap */
+    padding-top: 60px; /* Adjust top padding */
+  }
+
   .sectionTitle,
   .trendingTitle {
     font-size: 1.8rem;
@@ -178,28 +221,35 @@
   .latestPostImage {
     height: 250px;
   }
+
+  /* Adjust active state for 768px */
+  .trendingPost.active {
+    margin-left: -20px; /* Keep consistent with padding if not fully responsive */
+    margin-right: -20px;
+  }
 }
 
 @media (max-width: 480px) {
-  .trendingBlogsContainer { /* Renamed */
+  .trendingBlogsContainer {
     margin: 40px auto;
-    padding: 0 15px;
+    padding: 0 15px; /* Minimal padding for mobile */
+    padding-top: 40px; /* Adjust top padding */
   }
 
   .sectionTitle,
   .trendingTitle {
     font-size: 1.5rem;
-    text-align: center;
+    text-align: center; /* Center titles on mobile */
   }
 
   .trendingHeader {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack header elements */
+    align-items: center; /* Center items in stacked header */
     gap: 10px;
   }
 
   .seeAllLink {
-    align-self: flex-end;
+    align-self: center; /* Center 'See all' link */
   }
 
   .latestPostImage {
@@ -215,7 +265,7 @@
   }
 
   .readMoreButton {
-    width: 100%;
+    width: 100%; /* Make button full width */
     text-align: center;
   }
 
@@ -226,65 +276,11 @@
   .trendingPostTitle {
     font-size: 1rem;
   }
-}
 
-/* ... (existing styles) ... */
-
-.trendingPost {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
-  cursor: pointer; /* Add pointer for clickable items */
-  transition: background-color 0.2s ease, transform 0.1s ease; /* Smooth transition */
-}
-
-.trendingPost:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-
-
-/* New style for active/selected trending post */
-.trendingPost.active {
-  background-color: #FC4100; /* Reddish color for active state */
-  color: #fff;
-  border-radius: 8px; /* Match the highlighted style */
-  padding: 20px; /* Increase padding for active state */
-  margin-left: -20px; /* Adjust margin to accommodate padding */
-  margin-right: -20px;
-}
-
-.trendingPost.active .trendingPostMeta,
-.trendingPost.active .trendingPostTitle {
-  color: #fff; /* Ensure text is white when active */
-}
-
-
-/* Highlighted trending post (keep this for the initial specific highlight) */
-.highlightedPost {
-  background-color: #FC4100;
-  color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 25px;
-}
-
-.highlightedPost .trendingPostMeta,
-.highlightedPost .trendingPostTitle {
-  color: #fff;
-}
-
-/* Responsive adjustments */
-/* ... (existing responsive styles) ... */
-
-@media (max-width: 480px) {
-  /* ... (existing styles) ... */
+  /* Adjust active state for 480px */
   .trendingPost.active {
-    margin-left: -15px; /* Adjust for smaller screens */
+    padding: 15px; /* Reduce padding for smaller screens */
+    margin-left: -15px; /* Adjust negative margin */
     margin-right: -15px;
   }
 }

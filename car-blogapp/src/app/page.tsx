@@ -1,4 +1,3 @@
-// app/page.tsx or pages/index.tsx
 import CarPostCard from '@/components/CarPostCard';
 import CategorySection from '@/components/CategorySection';
 import HeroSection from '@/components/HeroSection';
@@ -13,11 +12,11 @@ async function getPosts() {
     const author = users.find((u: any) => u.id === post.userId);
     let imageUrl = '';
 
-    if (post.id === 1) imageUrl = '/TrendingBlog4.png';
+    if (post.id === 1) imageUrl = '/TrendingBlogs4.png';
     else if (post.id === 2) imageUrl = '/TrendingBlogs1.webp';
     else if (post.id === 3) imageUrl = '/TrendingBlogs2.jpg';
     else if (post.id === 4) imageUrl = '/TrendingBlogs3.jpg';
-    else imageUrl = '/TrendingBlogs5.png';
+    else imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXowz1FO0-jzxik-RtD5SLyIb_w713QdyCGw&s';
 
     return {
       id: post.id,
@@ -35,12 +34,15 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <TrendingBlogs />
+      <div id='trending'>
+<TrendingBlogs />
+      </div>
+      
       <CategorySection />
       <Testimonial />
 
       {/* Pass posts array as props */}
-      <CarPostCard posts={posts} />
+      <CarPostCard posts={posts} />  
     </>
   );
 }

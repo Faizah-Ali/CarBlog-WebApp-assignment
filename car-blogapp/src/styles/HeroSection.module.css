@@ -6,7 +6,7 @@
   align-items: center;
   color: #fff;
   overflow: hidden; /* Hide overflow from image */
-  background: fixed;
+  background: fixed; /* Keep background fixed for parallax-like effect */
 }
 
 .backgroundImage {
@@ -19,13 +19,14 @@
   z-index: -1; /* Send it behind content */
 }
 
+/* You had this commented out, but an overlay is crucial for text readability over busy images */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
   z-index: 0;
 }
 
@@ -33,13 +34,14 @@
   position: relative;
   z-index: 1;
   max-width: 1200px;
-  /* margin: 0 auto; */
-  margin-left: 360px;
+  /* margin: 0 auto; */ /* Original comment, but then margin-left applied */
+  margin-left: 360px; /* Preserve this for desktop as requested */
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 80%; /* Ensure content aligns centrally vertically */
+  /* Remove height: 80% on mobile as it might restrict content flow */
 }
 
 .heading {
@@ -86,8 +88,6 @@
 .arrowIcon {
   width: 18px;
   height: 18px;
-  /* You might use an SVG or an icon font here. For simplicity,
-     we'll use a simple border trick or a unicode arrow. */
   display: inline-block;
   border: solid white;
   border-width: 0 3px 3px 0;
@@ -96,42 +96,95 @@
   -webkit-transform: rotate(-45deg);
 }
 
-.arrowIcon:hover{
-    border: solid #FC4100;
-    border-width: 0 3px 3px 0;
+.arrowIcon:hover {
+  border: solid #FC4100;
+  border-width: 0 3px 3px 0;
 }
 
 /* Responsive adjustments */
+/* For screens up to 1024px */
 @media (max-width: 1024px) {
+  .heroContainer {
+    height: 90vh; /* Slightly less height */
+    /* Adjust content alignment for smaller screens */
+    align-items: flex-start; /* Align content to the top */
+    padding-top: 100px; /* Add top padding to push content down */
+  }
+
+  .content {
+    margin-left: 15%; /* Adjust margin-left to be percentage-based */
+    padding: 0 15px; /* Adjust padding */
+    height: auto; /* Allow content height to be natural */
+    max-width: 90%; /* Ensure content doesn't get too wide */
+  }
+
   .heading {
-    font-size: 3.5rem;
+    font-size: 4rem; /* Smaller heading */
+    max-width: 90%; /* Allow heading to take more width */
+  }
+
+  .description {
+    font-size: 1.1rem;
+    max-width: 90%;
+    margin-left: 0; /* Remove fixed left margin for description */
+  }
+
+  .subscribeButton {
+    margin-left: 0; /* Remove fixed left margin for button */
+    margin-bottom: 50px; /* Adjust bottom margin */
   }
 }
 
+/* For screens up to 768px (Tablets) */
 @media (max-width: 768px) {
   .heroContainer {
-    height: auto;
-    min-height: 70vh;
-    padding: 80px 0;
+    height: auto; /* Allow height to adjust to content */
+    min-height: 70vh; /* Ensure a minimum height */
+    padding: 60px 0; /* Adjust vertical padding */
+    align-items: center; /* Center content vertically again for smaller screens if needed */
+    text-align: center; /* Center text content */
+  }
+
+  .content {
+    margin: 0 auto; /* Center content horizontally */
+    padding: 0 20px; /* Ensure padding on sides */
+    max-width: 100%; /* Take full width */
+    height: auto; /* Allow content height to be natural */
   }
 
   .heading {
-    font-size: 2.8rem;
+    font-size: 2.8rem; /* Smaller heading */
+    margin-bottom: 15px;
+    max-width: 100%; /* Take full width */
   }
 
   .description {
     font-size: 1rem;
+    margin-bottom: 40px;
+    max-width: 100%; /* Take full width */
   }
 
   .subscribeButton {
     padding: 12px 25px;
     font-size: 1rem;
+    width: fit-content; /* Keep button content-width */
+    margin: 0 auto 30px auto; /* Center button and adjust bottom margin */
   }
 }
 
+/* For screens up to 480px (Mobile) */
 @media (max-width: 480px) {
+  .heroContainer {
+    min-height: 60vh; /* Further reduce min-height */
+    padding: 40px 0;
+  }
+
+  .content {
+    padding: 0 15px; /* Reduce padding for smaller screens */
+  }
+
   .heading {
-    font-size: 2rem;
+    font-size: 2rem; /* Even smaller heading */
     margin-bottom: 15px;
   }
 
@@ -141,7 +194,8 @@
   }
 
   .subscribeButton {
-    width: 100%;
-    justify-content: center;
+    width: 90%; /* Make button almost full width on mobile */
+    max-width: 250px; /* Set a max width for the button */
+    justify-content: center; /* Center text within the button */
   }
 }

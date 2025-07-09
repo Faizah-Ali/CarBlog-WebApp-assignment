@@ -16,7 +16,7 @@ async function getPost(id: string) {
     author: user?.name || 'Unknown',
     date: 'Jan 10, 2024',
     time: '3 Min Read',
-    imageUrl: `https://source.unsplash.com/800x400/?car&sig=${id}`
+    imageUrl:`https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&height=600&width=1200&fit=bounds`
   }
 }
 
@@ -33,19 +33,33 @@ export default async function PostDetail({ params }: PostDetailProps) {
         <p><strong>{post.author}</strong> &nbsp;|&nbsp; {post.date} &nbsp;|&nbsp; {post.time}</p>
       </div>
 
-      <div className={styles.content}>
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</h2>
-        <p>{post.body.repeat(2)}</p>
+     <div className={styles.content}>
+  <h2>Innovations in Automotive Engineering</h2>
+  <p>
+    The auto industry constantly evolves, driven by tech, environment, and consumer demands. This article explores next-gen vehicles, from electric powertrains to advanced autonomous systems. We examine how AI, sensors, and real-time data redefine driving.
+  </p>
 
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</h2>
-        <p>{post.body.repeat(2)}</p>
+  <p>
+    Beyond performance, connectivity and user experience are key. Modern cars are smart, networked hubs integrating seamlessly with digital lives through advanced infotainment, V2X communication, and over-the-air updates, enhancing safety, convenience, and entertainment.
+  </p>
 
-        <ul>
-          <li><strong>Lorem ipsum dolor sit amet</strong></li>
-          <li>Non blandit massa enim nec scelerisque</li>
-          <li>Neque egestas congue quisque egestas</li>
-        </ul>
-      </div>
+  <h2>Future Roads: Sustainable Mobility & Possibilities</h2>
+  <p>
+    Future transport considers smart infrastructure and new ownership models. Vehicles will be interconnected ecosystem components, emphasizing sustainable materials and closed-loop manufacturing to reduce environmental impact.
+  </p>
+
+  <p>
+    AI and machine learning will personalize driving, optimizing routes and predicting maintenance. Shared mobility and future concepts hint at more fluid, accessible, and eco-conscious transportation, an exciting journey of continuous breakthroughs.
+  </p>
+
+  <ul>
+    <li><b>Sustainable Mobility:</b> Eco-friendly materials and energy.</li>
+    <li><b>Battery Tech & Charging:</b> Increased range, faster charging.</li>
+    <li><b>ADAS & Autonomous Driving:</b> AI-powered safety and self-driving progress.</li>
+    <li><b>Connected Car Ecosystems:</b>Digital integration and personalized experiences.</li>
+    <li><b>Urban Mobility:</b> Smart cities adapting to future transport.</li>
+  </ul>
+</div>
 
       <CategorySection />
     </div>

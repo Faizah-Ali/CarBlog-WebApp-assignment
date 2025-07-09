@@ -10,8 +10,8 @@ export default function Footer() {
             <div className={styles.logoCircle}>
              
             <img
-              src="/logo.png" // This path means the file MUST be in your /public folder
-              alt="Company Logo" // Always provide a meaningful alt text for accessibilit
+              src="/logo.png" 
+              alt="Company Logo"
             />
             </div>
             <span><b><i>REGAL RIDES</i></b></span>

@@ -2,13 +2,13 @@
   /* Remove fixed padding-left */
   max-width: 1200px; /* Set a max-width for the content */
   margin: 60px auto; /* Center the wrapper and add vertical margin */
-  padding: 0 20px; /* Add horizontal padding for smaller screens */
+  padding: 0 10px; /* Add horizontal padding for smaller screens */
   box-sizing: border-box; /* Include padding in element's total width/height */
   /* height: 400px; Remove fixed height unless absolutely necessary */
   
   border-radius: 10px;
   padding-bottom: 30px; /* Add some padding at the bottom of the section */
-}
+  }
 
 .heading {
   font-size: 2.2rem;
@@ -16,6 +16,10 @@
   margin-bottom: 30px; /* Add margin below the heading */
   color: #333; /* Darker color for heading */
   text-align: left; /* Center the heading */
+}
+
+.introParagraph{
+  margin-left: 40px;
 }
 
 .grid {

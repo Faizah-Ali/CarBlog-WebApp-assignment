@@ -1,4 +1,4 @@
-"use client"; // This component needs client-side interactivity (useState, onClick)
+"use client"; 
 
 import Image from 'next/image';
 import { useState } from 'react';
@@ -9,7 +9,7 @@ interface Testimonial {
   text: string;
   author: string;
   location: string;
-  avatar: string; // Path to the avatar image
+  avatar: string; 
 }
 
 const testimonialsData: Testimonial[] = [
@@ -18,28 +18,28 @@ const testimonialsData: Testimonial[] = [
     text: "This blog has completely transformed my understanding of the automotive world. The articles are incredibly insightful, well-researched, and cover a wide range of topics from cutting-edge electric vehicle technology to the timeless appeal of classic cars. A must-read for any car enthusiast!",
     author: "Anya Sharma",
     location: "New York, USA",
-    avatar: "/TestimonialUser.png", // Placeholder avatar image
+    avatar: "/TestimonialUser.png", 
   },
   {
     id: 2,
     text: "I used to find car reviews daunting, but this blog makes everything so clear and engaging. The detailed breakdowns and practical advice helped me make an informed decision on my last car purchase. Highly recommended for both seasoned drivers and newcomers!",
     author: "Marcus Bell",
     location: "Los Angeles, USA",
-    avatar: "/Testimonial1.png", // Another placeholder avatar
-  },
+    avatar: "/Testimonial1.png", 
+  },  
   {
     id: 3,
     text: "As someone passionate about sustainable transport, I appreciate the deep dives into EV advancements and environmental impact. It's refreshing to see a blog that combines passion for cars with a focus on future-forward mobility solutions. Keep up the fantastic work!",
     author: "Chloe Nguyen",
     location: "London, UK",
-    avatar: "/Testimonial2.png", // Another placeholder avatar
+    avatar: "/Testimonial2.png", 
   },
   {
     id: 4,
     text: "The 'Classic Cars Reimagined' series is my favorite! It perfectly blends nostalgia with modern innovation. This blog truly celebrates the art and engineering of automobiles in a way that resonates with me. Great content and excellent writing!",
     author: "David Kim",
     location: "Sydney, Australia",
-    avatar: "/TestimonialUser.png", // Another placeholder avatar
+    avatar: "/TestimonialUser.png", 
   },
 ];
 
@@ -89,10 +89,10 @@ const Testimonials: React.FC = () => {
         </div>
         <div className={styles.navigationButtons}>
           <button onClick={handlePrev} className={styles.navButton}>
-            <span className={styles.navArrow}>&#8592;</span> {/* Left arrow HTML entity */}
+            <span className={styles.navArrow}>&#8592;</span> 
           </button>
-          <button onClick={handleNext} className={`${styles.navButton} ${styles.active}`}> {/* Active for the right arrow initially */}
-            <span className={styles.navArrow}>&#8594;</span> {/* Right arrow HTML entity */}
+          <button onClick={handleNext} className={`${styles.navButton} ${styles.active}`}> 
+            <span className={styles.navArrow}>&#8594;</span> 
           </button>
         </div>
       </div>

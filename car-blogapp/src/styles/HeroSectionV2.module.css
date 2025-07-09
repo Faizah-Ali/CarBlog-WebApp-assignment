@@ -1,0 +1,305 @@
+.heroContainer {
+  position: relative;
+  width: 97.9%; /* Preserving your specified width */
+  min-height: 80vh;
+  background-color: #0c0c24;
+  color: #FFFAE6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  width: 61.5%; /* Preserving your specified width */
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.leftColumn {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: left;
+  margin-bottom: 85px;
+}
+
+.heading {
+  font-size: 4.5rem;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+.subscribeButton {
+  background-color: #FC4100;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.subscribeButton:hover {
+  background-color: #e03200; /* Slightly darker on hover */
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.rightColumn {
+  flex: 1;
+  min-width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px; /* Fixed height for the collage area on desktop */
+}
+
+.collageImage {
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collageImage:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Positioning for each image in the collage (Desktop - preserved and corrected for absolute positioning) */
+.image1 { /* Top-left car */
+  width: 200px;
+  height: 400px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.image2 { /* Yellow car, slightly overlapping */
+  width: 200px;
+  height: 400px;
+  top: 0px;
+  left: 250px; /* 50px gap from image1 + image1 width */
+  z-index: 3;
+}
+
+.image3 { /* Steering wheel - Adjusted from margin-top to top for absolute positioning */
+  width: 200px;
+  height: 400px;
+  top: 120px; /* Interpreted from your margin-top: 120px */
+  left: 100px;
+  z-index: 2;
+}
+
+.image4 { /* Dark car bottom right - Adjusted from margin-top to top for absolute positioning */
+  width: 200px;
+  height: 400px;
+  top: 120px; /* Interpreted from your margin-top: 120px */
+  right: 0;
+  z-index: 4;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .heroContainer {
+    min-height: unset; /* Allow height to adjust naturally on smaller screens */
+    padding: 40px 15px; /* Adjust padding for smaller screens */
+  }
+
+  .contentWrapper {
+    width: 90%; /* Use more width on smaller screens */
+    flex-direction: column; /* Stack columns */
+    text-align: center;
+    gap: 40px; /* Reduce gap when stacked */
+  }
+
+  .leftColumn {
+    max-width: 100%;
+    margin-bottom: 40px; /* Adjust margin for stacking */
+  }
+
+  .heading {
+    font-size: 3.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .subscribeButton {
+    margin: 0 auto; /* Center button when text is centered */
+  }
+
+  .rightColumn {
+    height: 450px; /* Adjust collage height */
+    width: 100%; /* Take full width */
+    max-width: 500px; /* Limit max width of collage on smaller screens to prevent stretching */
+    margin: 0 auto; /* Center the image collage */
+  }
+
+  /* Re-positioning collage images for 1024px breakpoint */
+  .image1 {
+    width: 220px; /* Adjust sizes */
+    height: 350px; /* Adjust sizes */
+    top: 20px;
+    left: 10%;
+  }
+
+  .image2 {
+    width: 200px;
+    height: 300px;
+    top: 0px;
+    left: 45%;
+  }
+
+  .image3 {
+    width: 180px;
+    height: 250px;
+    top: 180px; /* Adjusted position */
+    left: 15%;
+  }
+
+  .image4 {
+    width: 160px;
+    height: 220px;
+    top: 220px; /* Adjusted position */
+    right: 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    padding: 30px 10px;
+  }
+
+  .heading {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .subscribeButton {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .rightColumn {
+    height: 380px; /* Further adjust collage height */
+  }
+
+  /* Re-positioning collage images for 768px breakpoint */
+  .image1 {
+    width: 180px;
+    height: 300px;
+    top: 10px;
+    left: 5%;
+  }
+
+  .image2 {
+    width: 160px;
+    height: 250px;
+    top: 0px;
+    left: 45%;
+  }
+
+  .image3 {
+    width: 150px;
+    height: 220px;
+    top: 160px;
+    left: 10%;
+  }
+
+  .image4 {
+    width: 140px;
+    height: 200px;
+    top: 190px;
+    right: 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContainer {
+    padding: 20px 10px;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .subscribeButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rightColumn {
+    height: 320px; /* Even smaller collage height */
+  }
+
+  /* Re-positioning collage images for 480px breakpoint */
+  .image1 {
+    width: 150px;
+    height: 250px;
+    top: 5px;
+    left: 0;
+  }
+
+  .image2 {
+    width: 130px;
+    height: 200px;
+    top: -10px;
+    left: 40%;
+  }
+
+  .image3 {
+    width: 120px;
+    height: 180px;
+    top: 130px;
+    left: 5%;
+  }
+
+  .image4 {
+    width: 110px;
+    height: 160px;
+    top: 160px;
+    right: 0;
+  }
+}

@@ -19,7 +19,7 @@ export default function BlogListCard({ id, title, body, author, date, time, imag
         <h3>{title}</h3>
         <p>{body.slice(0, 140)}...</p>
         <div className={styles.meta}>
-          <span>By {author}</span> · <span>{date} · {time}</span>
+          <i><span>By {author}</span> <br/><span>{date} · {time}</span></i>
         </div>
         <Link href={`/posts/${id}`} className={styles.button}>Read full article...</Link>
       </div>

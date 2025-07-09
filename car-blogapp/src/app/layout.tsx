@@ -1,4 +1,3 @@
-// app/layout.tsx
 import './globals.css'
 import type { Metadata } from 'next'
 import Header from '@/components/Header'
@@ -19,7 +18,9 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
+        <div id='footer-subscribe'>
         <Footer />
+        </div>
       </body>
     </html>
   )

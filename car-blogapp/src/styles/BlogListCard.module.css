@@ -1,29 +1,125 @@
+/* styles/BlogListCard.module.css */
+
 .card {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap for better spacing */
   margin-bottom: 2rem;
+  background-color: #FFFAE6; /* White background for the card */
+  padding: 1.5rem; /* Padding inside the card */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  align-items: flex-start; /* Aligns image and text content to the top */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift card slightly on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .image {
   width: 220px;
-  height: 160px;
+  height: 225px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 8px; /* Match card's border-radius for consistency */
+  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .info {
-  flex: 1;
+  flex: 1; /* Allows the info section to take available space */
+  display: flex; /* Make info a flex container */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute space between elements */
+}
+
+.info h3 {
+  font-size: 1.5rem; /* Larger font for the title */
+  font-weight: 600; /* Semi-bold */
+  color: #333; /* Darker color for prominence */
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: 0.75rem; /* Space below title */
+}
+
+.info p {
+  font-size: 1rem;
+  color: #000;
+  line-height: 1.5;
+  margin-bottom: 1rem; /* Space below description */
+  flex-grow: 1; /* Allow description to take up available vertical space */
 }
 
 .meta {
   font-size: 0.9rem;
-  color: gray;
-  margin: 0.5rem 0;
+  color: #777; /* Slightly darker gray for better readability */
+  margin: 0.5rem 0; /* Keep existing margin */
+}
+
+.meta span {
+  display: inline-block; /* Ensure spacing between meta items */
+  margin-right: 0.5rem;
 }
 
 .button {
   display: inline-block;
-  margin-top: 0.5rem;
-  color: #e63946;
-  text-decoration: underline;
+  margin-top: 1rem; /* Space above the button */
+  background-color: #FC4100; /* Red button background */
+  color: #fff; /* White text on button */
+  padding: 10px 20px; /* Padding for button */
+  border-radius: 5px; /* Rounded corners for button */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  align-self: flex-start; /* Align button to the left within flex container */
+}
+
+.button:hover {
+  background-color: #e03200; /* Darker red on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column; /* Stack image and info vertically */
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .image {
+    width: 100%; /* Image takes full width */
+    height: 200px; /* Adjust height for stacked layout */
+  }
+
+  .info {
+    text-align: left; /* Keep text left-aligned even when stacked */
+  }
+
+  .info h3 {
+    font-size: 1.3rem; /* Smaller title on mobile */
+  }
+
+  .info p {
+    font-size: 0.9rem; /* Smaller description on mobile */
+  }
+
+  .button {
+    align-self: center; /* Center button when stacked */
+    width: 100%; /* Make button full width when stacked */
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 0.75rem;
+  }
+
+  .image {
+    height: 180px;
+  }
+  .info h3 {
+    font-size: 1.2rem;
+  }
+  .info p {
+    font-size: 0.85rem;
+  }
 }

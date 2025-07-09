@@ -3,12 +3,11 @@ import Image from 'next/image';
 import styles from '@/styles/PostDetail.module.css';
 import CategorySection from '@/components/CategorySection'; // Ensure this path is correct
 
-// CORRECTED INTERFACE: Added searchParams
 interface PostDetailProps {
   params: {
     id: string;
   };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  
 }
 
 // Define interfaces for API data to avoid 'any' if not defined globally
@@ -48,8 +47,9 @@ async function getPost(id: string): Promise<PostData> {
   };
 }
 
-// FIX: Prefix searchParams with an underscore to mark it as intentionally unused
-export default async function PostDetail({ params, searchParams: _searchParams }: PostDetailProps) {
+
+export default async function PostDetail({ params }: PostDetailProps) {
+
   const post = await getPost(params.id);
 
   return (

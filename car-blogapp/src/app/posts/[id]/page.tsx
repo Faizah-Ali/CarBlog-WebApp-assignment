@@ -1,17 +1,10 @@
-import { Metadata } from 'next'
-import Image from 'next/image'
-import CategorySection from '@/components/CategorySection'
-import styles from '@/styles/PostDetail.module.css'
-
-// Static metadata export (optional)
-export const metadata: Metadata = {
-  title: 'Post Details',
-  description: 'Read more about the blog post',
-}
+import Image from 'next/image';
+import styles from '@/styles/PostDetail.module.css';
+import CategorySection from '@/components/CategorySection';
 
 async function getPost(id: string) {
-  const post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res => res.json())
-  const user = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`).then(res => res.json())
+  const post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res => res.json());
+  const user = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`).then(res => res.json());
 
   return {
     ...post,
@@ -19,12 +12,13 @@ async function getPost(id: string) {
     date: 'Jan 10, 2024',
     time: '3 Min Read',
     imageUrl: `https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&height=600&width=1200&fit=bounds`
-  }
+  };
 }
 
-// ✅ Correct format for Next.js App Router dynamic route
-export default async function Page({ params }: { params: { id: string } }) {
-  const post = await getPost(params.id)
+// ✅ DO NOT use `PageProps`, `GetStaticPropsContext`, or external types.
+// ✅ Just simple destructuring for `params`
+export default async function Page({ params }: any) {
+  const post = await getPost(params.id);
 
   return (
     <div className={styles.wrapper}>
@@ -45,10 +39,12 @@ export default async function Page({ params }: { params: { id: string } }) {
 
       <div className={styles.content}>
         <h2>Innovations in Automotive Engineering</h2>
-        <p>The auto industry constantly evolves, driven by tech, environment, and consumer demands...</p>
+        <p>
+          The auto industry constantly evolves, driven by tech, environment, and consumer demands...
+        </p>
       </div>
 
       <CategorySection />
     </div>
-  )
+  );
 }

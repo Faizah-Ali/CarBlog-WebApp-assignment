@@ -152,8 +152,9 @@ const TrendingBlogs: React.FC = () => {
            
             isActive={activeTrendingId === blog.id || (activeTrendingId === null && blog.id === currentLatestBlog.id)}
         
-            imageUrl={undefined}
-            description={undefined}
+           imageUrl={blog.imageUrl || "/HeroSection.png"} // 👈 your default image path
+description={blog.description || "No description available"}
+
           />
         ))}
       </div>

@@ -4,31 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>README - Regal Rides</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 920px;
-      margin: 30px auto;
-      padding: 20px;
-      line-height: 1.6;
-      color: #333;
-    }
-    code, pre {
-      background: #f4f4f4;
-      padding: 6px 10px;
-      border-radius: 5px;
-      display: block;
-      overflow-x: auto;
-    }
-    h1, h2, h3 {
-      color: #0A1D56;
-    }
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 20px 0;
-    }
-  </style>
+  
 </head>
 <body>
 

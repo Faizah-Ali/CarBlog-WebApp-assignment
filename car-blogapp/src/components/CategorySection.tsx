@@ -25,7 +25,7 @@ const categories: Category[] = [
   },
   {
     name: 'Maintenance Tips',
-    desc: 'Essential advice to keep your vehicle running smoothly and extend its lifespan.',
+    desc: 'Essential advice to keep vehicle running smoothly and extend its lifespan.',
     image: '/CategorySection2.png',
     details:
       'Maintenance tips ensure your car stays in top condition — from oil changes to tire rotations and brake inspections.',

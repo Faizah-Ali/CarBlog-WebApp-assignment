@@ -44,7 +44,7 @@ export default function Header() {
           </Link>
         </nav>
         
-        <Link href="/subscribe-page"> 
+        <Link href="#footer-subscribe" >
           <button className={styles.subscribe}>Subscribe</button>
         </Link>
       </div>

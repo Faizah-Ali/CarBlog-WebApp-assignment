@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from '@/styles/contact.module.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CarRentalForm() {
 
@@ -14,18 +16,16 @@ export default function CarRentalForm() {
     message: '',
   });
 
-  // validation errors states
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [statusMessage, setStatusMessage] = useState(''); 
+  const [statusMessage, setStatusMessage] = useState('');
 
-  // Updated handleChange to work with all input types (input fieds and text area both)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-  
+
     if (errors[name]) {
       setErrors((prevErrors) => {
         const newErrors = { ...prevErrors };
@@ -33,10 +33,10 @@ export default function CarRentalForm() {
         return newErrors;
       });
     }
-    setStatusMessage(''); 
+
+    setStatusMessage('');
   };
 
-//  Fields validation
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
 
@@ -48,7 +48,7 @@ export default function CarRentalForm() {
     }
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = 'Phone Number is required';
-    } else if (!/^\+?\d{7,15}$/.test(formData.phoneNumber.trim())) { 
+    } else if (!/^\+?\d{7,15}$/.test(formData.phoneNumber.trim())) {
       newErrors.phoneNumber = 'Invalid Phone Number';
     }
     if (!formData.emailAddress.trim()) {
@@ -63,35 +63,33 @@ export default function CarRentalForm() {
     return newErrors;
   };
 
-   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatusMessage('Sending...');
 
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      setStatusMessage('Please correct the errors above.');
+      toast.error('Please correct the errors above.');
       return;
     }
 
-    
-    setErrors({}); 
+    setErrors({});
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // for Simulating network delay
-      setStatusMessage('Message submitted successfully! 🚀');
-      setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', message: '' }); 
-
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      toast.success('Message submitted successfully! 🚀');
+      setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', message: '' });
     } catch (error) {
       console.error('Submission error:', error);
-      setStatusMessage('An error occurred. Please try again later.');
+      toast.error('An error occurred. Please try again later.');
     }
   };
 
   return (
-    <section className={styles.rentalFormContainer}> 
+    <section className={styles.rentalFormContainer}>
       <Image
-        src="/HeroSection.png" 
+        src="/HeroSection.png"
         alt="Car on a scenic road"
         layout="fill"
         objectFit="cover"
@@ -101,10 +99,9 @@ export default function CarRentalForm() {
       />
 
       <div className={styles.formCard}>
-        <h2 className={styles.formHeading}>📬 Contact Us</h2> 
+        <h2 className={styles.formHeading}>📬 Contact Us</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGrid}>
-            {/* First Name */}
             <div className={styles.formGroup}>
               <label htmlFor="firstName" className={styles.label}>First Name</label>
               <input
@@ -120,7 +117,6 @@ export default function CarRentalForm() {
               {errors.firstName && <p className={styles.errorMessage}>{errors.firstName}</p>}
             </div>
 
-            {/* Last Name */}
             <div className={styles.formGroup}>
               <label htmlFor="lastName" className={styles.label}>Last Name</label>
               <input
@@ -136,7 +132,6 @@ export default function CarRentalForm() {
               {errors.lastName && <p className={styles.errorMessage}>{errors.lastName}</p>}
             </div>
 
-            {/* Phone Number */}
             <div className={styles.formGroup}>
               <label htmlFor="phoneNumber" className={styles.label}>Phone No.</label>
               <input
@@ -152,7 +147,6 @@ export default function CarRentalForm() {
               {errors.phoneNumber && <p className={styles.errorMessage}>{errors.phoneNumber}</p>}
             </div>
 
-            {/* Email Address */}
             <div className={styles.formGroup}>
               <label htmlFor="emailAddress" className={styles.label}>Email Address</label>
               <input
@@ -168,7 +162,6 @@ export default function CarRentalForm() {
               {errors.emailAddress && <p className={styles.errorMessage}>{errors.emailAddress}</p>}
             </div>
 
-            {/* Message Textarea */}
             <div className={styles.formGroup} style={{ gridColumn: '1 / -1' }}>
               <label htmlFor="message" className={styles.label}>Message</label>
               <textarea
@@ -183,15 +176,17 @@ export default function CarRentalForm() {
               ></textarea>
               {errors.message && <p className={styles.errorMessage}>{errors.message}</p>}
             </div>
+          </div>
 
-          </div> 
-
-          <button type="submit" className={styles.searchButton}> 
+          <button type="submit" className={styles.searchButton}>
             SUBMIT <span className={styles.arrowIcon}>&#9654;</span>
           </button>
           {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
         </form>
       </div>
+
+   
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
     </section>
   );
 }

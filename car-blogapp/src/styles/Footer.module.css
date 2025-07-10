@@ -41,12 +41,26 @@
 .links {
   display: flex;
   gap: 1.5rem;
-  list-style: none;
-  padding: 0;
+  
 }
 
-.links li {
-  cursor: pointer;
+.links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem; /* Adjusted font size for better balance */
+  transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.links a:hover,
+.links a.active {
+  font-weight: 700;
+  color: #FC4100; /* Highlight color on hover/active */
+  text-decoration: underline;
+}
+
+.links li{
+  list-style-type: none;
 }
 
 .newsletter {

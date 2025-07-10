@@ -1,14 +1,13 @@
-// src/app/page.tsx
 import CarPostCard from '@/components/CarPostCard';
 import CategorySection from '@/components/CategorySection';
 import HeroSection from '@/components/HeroSection';
 import Testimonial from '@/components/Testimonial';
 import TrendingBlogs from '@/components/TrendingBlogs';
 
-// Define interfaces for the data fetched from JSONPlaceholder
+//Interfaces are defined for fetching data from JSONPlaceholder
 interface Post {
   id: number;
-  userId: number; // Important for linking to users
+  userId: number; //for linking users
   title: string;
   body: string;
 }
@@ -16,7 +15,6 @@ interface Post {
 interface User {
   id: number;
   name: string;
-  // You might add other user properties if you use them, e.g., email, username
 }
 
 // Define the structure of the enriched post data that CarPostCard expects
@@ -47,7 +45,7 @@ async function getPosts(): Promise<EnrichedPost[]> { // Explicitly define return
       id: post.id,
       title: post.title,
       body: post.body,
-      author: author?.name || 'Unknown', // Safely access author name
+      author: author?.name || 'Unknown', 
       imageUrl
     };
   });

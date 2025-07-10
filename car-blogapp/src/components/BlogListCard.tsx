@@ -1,6 +1,5 @@
-// src/components/BlogListCard.tsx
 import Link from 'next/link';
-import Image from 'next/image'; // <--- Ensure this is imported
+import Image from 'next/image'; 
 import styles from '../styles/BlogListCard.module.css';
 
 interface BlogListCardProps {
@@ -16,15 +15,13 @@ interface BlogListCardProps {
 export default function BlogListCard({ id, title, body, author, date, time, imageUrl }: BlogListCardProps) {
   return (
     <div className={styles.card}>
-      {/* Updated <Image /> with dimensions from CSS */}
       <Image
         src={imageUrl}
         className={styles.image}
         alt={title}
-        width={220} // <--- Set width based on BlogListCard.module.css
-        height={225} // <--- Set height based on BlogListCard.module.css
-        // objectFit="cover" is applied via className={styles.image}
-      />
+        width={220}
+        height={225} 
+    />
       <div className={styles.info}>
         <h3>{title}</h3>
         <p>{body.slice(0, 140)}...</p>

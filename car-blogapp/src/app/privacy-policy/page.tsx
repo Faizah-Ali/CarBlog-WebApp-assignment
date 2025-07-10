@@ -1,5 +1,4 @@
-import styles from '@/styles/about.module.css'; // Assuming 'about.module.css' is the correct path for privacy-policy page styling
-
+import styles from '@/styles/about.module.css'; //about page and contact page have same styling
 export default function PrivacyPolicyPage() {
   return (
     <div className={styles.container}>
@@ -53,13 +52,8 @@ export default function PrivacyPolicyPage() {
       <h2 className={styles.sectionTitle}>🔄 Changes to This Policy:</h2>
       <p className={styles.sectionParagraph} style={{ textAlign: 'center', marginTop: '3rem' }}>
         <i><b>Last Modified:</b> July 9, 2025.</i>
-      </p>
-
-      {/* This line is the focus of the error. Ensure there are no invisible characters or actual quotes. */}
-      {/* It should appear exactly as below, without literal quotes around the date. */}
-      <p className={styles.sectionParagraph} style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <i><b>Last Modified:</b> July 9, 2025.</i>
-      </p>
+      </p>    
+     
     </div>
   );
 }

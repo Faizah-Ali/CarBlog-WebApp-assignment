@@ -2,12 +2,12 @@ import Image from 'next/image';
 import styles from '@/styles/PostDetail.module.css';
 import CategorySection from '@/components/CategorySection';
 
-// ✅ Type for params
+// Type for params
 type Props = {
   params: Promise<{ id: string }>; // params is async
 };
 
-// ✅ Post structure
+// PStructure of Post
 type PostData = {
   id: number;
   title: string;
@@ -18,7 +18,7 @@ type PostData = {
   imageUrl: string;
 };
 
-// ✅ Get post data
+// Fetching post data
 async function getPost(id: string): Promise<PostData> {
   const post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res => res.json());
   const user = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`).then(res => res.json());
@@ -33,9 +33,9 @@ async function getPost(id: string): Promise<PostData> {
   };
 }
 
-// ✅ This function runs on the server (static/dynamic rendering)
+//F.n runs on server for static/dynamic rendering
 export default async function Page({ params }: Props) {
-  const resolvedParams = await params; // ✅ await the params object
+  const resolvedParams = await params; // await the params object
   const post = await getPost(resolvedParams.id);
 
   return (

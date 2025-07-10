@@ -6,7 +6,6 @@ import styles from '@/styles/contact.module.css';
 
 export default function CarRentalForm() {
 
-  // Updated state to match the new form fields
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -15,18 +14,18 @@ export default function CarRentalForm() {
     message: '',
   });
 
-  // State for validation errors
+  // validation errors states
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [statusMessage, setStatusMessage] = useState(''); // For success/error messages
+  const [statusMessage, setStatusMessage] = useState(''); 
 
-  // Updated handleChange to work with all input types
+  // Updated handleChange to work with all input types (input fieds and text area both)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    // Clear error for the field as user types
+  
     if (errors[name]) {
       setErrors((prevErrors) => {
         const newErrors = { ...prevErrors };
@@ -37,7 +36,7 @@ export default function CarRentalForm() {
     setStatusMessage(''); 
   };
 
-  // Updated validation logic for new fields
+//  Fields validation
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
 
@@ -64,8 +63,7 @@ export default function CarRentalForm() {
     return newErrors;
   };
 
-  // Updated handleSubmit
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatusMessage('Sending...');
 
@@ -80,9 +78,9 @@ export default function CarRentalForm() {
     setErrors({}); 
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 1500)); // for Simulating network delay
       setStatusMessage('Message submitted successfully! 🚀');
-      setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', message: '' }); // Clear form
+      setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', message: '' }); 
 
     } catch (error) {
       console.error('Submission error:', error);

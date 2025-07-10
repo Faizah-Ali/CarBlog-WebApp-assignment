@@ -1,9 +1,7 @@
-// src/app/blogs/page.tsx
-
 import BlogListCard from '@/components/BlogListCard';
-import HeroSectionV2 from '@/components/HeroSectionV2'; // Ensure correct path if HeroSectionV2 is in a subfolder
+import HeroSectionV2 from '@/components/HeroSectionV2'; 
 
-// Define interfaces for the data fetched from JSONPlaceholder
+//Interfaces defined- to fetch data from JSONPlaceholder
 interface Post {
   id: number;
   userId: number; // Important for linking to users
@@ -14,10 +12,9 @@ interface Post {
 interface User {
   id: number;
   name: string;
-  // You might add other user properties if you use them, e.g., email, username
 }
 
-// Define the structure of the enriched post data that BlogListCard expects
+//Enriched post data's structure defined that BlogListCard expects
 interface EnrichedPost {
   id: number;
   title: string;
@@ -38,16 +35,15 @@ async function getAllPosts(): Promise<EnrichedPost[]> { // Explicitly define ret
       id: post.id,
       title: post.title,
       body: post.body,
-      author: author?.name || 'Unknown', // Safely access author name
+      author: author?.name || 'Unknown', 
       date: 'Jan 10, 2024',
       time: '3 Min Read',
-      // Note: Using a static image URL here. Consider making it dynamic or from your public folder.
       imageUrl: `https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&height=600&width=1200&fit=bounds`
     };
   });
 }
 
-export default async function BlogsPage() { // Renamed 'blogs' to 'BlogsPage' for convention, but 'blogs' is fine
+export default async function BlogsPage() { 
   const posts = await getAllPosts();
 
   return (
@@ -66,7 +62,7 @@ export default async function BlogsPage() { // Renamed 'blogs' to 'BlogsPage' fo
           marginBottom: '1.5rem',
           color: '#333'
         }}>All Posts</h1>
-        {posts.map((post: EnrichedPost) => ( // Ensure map iteration variable has correct type
+        {posts.map((post: EnrichedPost) => ( 
           <BlogListCard key={post.id} {...post} />
         ))}
       </main>

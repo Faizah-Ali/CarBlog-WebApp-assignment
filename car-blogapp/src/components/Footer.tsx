@@ -1,31 +1,44 @@
-// src/components/Footer.tsx
+'use client'
+
 import styles from '@/styles/Footer.module.css';
-import Image from 'next/image'; // This import is correctly present and will now be used
+import Image from 'next/image'; 
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Footer() {
+    const pathname = usePathname()
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.logoSection}>
             <div className={styles.logoCircle}>
-              {/* Replaced <img> with <Image /> and added width, height */}
               <Image
                 src="/logo.png"
                 alt="Company Logo"
-                width={60} // <--- Set width based on Footer.module.css
-                height={55} // <--- Set height based on Footer.module.css
+                width={60} 
+                height={55} 
               />
             </div>
             <span><b><i>REGAL RIDES</i></b></span>
           </div>
 
           <ul className={styles.links}>
-            <li>Home</li>
-            <li>Blog</li>
-            <li>About us</li>
-            <li>Contact us</li>
-            <li>Privacy Policy</li>
+            <li> <Link href="/" className={pathname === '/' ? styles.active : ''}>
+            Home
+          </Link></li>
+            <li><Link href="/blogs" className={pathname.startsWith('/blogs') ? styles.active : ''}>
+            Blog
+          </Link></li>
+            <li><Link href="/about" className={pathname === '/about' ? styles.active : ''}>
+            About us
+          </Link></li>
+            <li><Link href="/contact" className={pathname === '/contact' ? styles.active : ''}>
+            Contact us
+          </Link></li>
+            <li><Link href="/privacy-policy" className={pathname === '/privacy-policy' ? styles.active : ''}>
+            Privacy Policy
+          </Link></li>
           </ul>
         </div>
 

@@ -71,7 +71,7 @@ const Testimonials: React.FC = () => {
       </div>
 
       <div className={styles.rightColumn}>
-        <p key={currentTestimonial.id} className={styles.testimonialText}> {/* key for smooth transition */}
+        <p key={currentTestimonial.id} className={styles.testimonialText}> {/* key is used for smooth transition */}
           {currentTestimonial.text}
         </p>
         <div className={styles.authorContainer}>

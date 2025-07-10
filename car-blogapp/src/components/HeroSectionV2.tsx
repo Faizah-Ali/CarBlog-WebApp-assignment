@@ -26,7 +26,7 @@ export default function HeroSectionV2() {
         </div>
 
         <div className={styles.rightColumn}>
-          {/* Image 1: Top-left car */}
+         
           <Image
             src="/HeroSectionV2-1.png"
             alt="Silver car on road"
@@ -35,7 +35,7 @@ export default function HeroSectionV2() {
             className={`${styles.collageImage} ${styles.image1}`}
             priority 
           />
-          {/* Image 2: Yellow car, middle */}
+         
           <Image
             src="/HeroSectionV2-3.png"
             alt="Yellow sports car"
@@ -43,7 +43,7 @@ export default function HeroSectionV2() {
             height={350}
             className={`${styles.collageImage} ${styles.image2}`}
           />
-          {/* Image 3: Steering wheel */}
+          
           <Image
             src="/HeroSectionV2-2.png"
             alt="Hands on steering wheel"
@@ -51,7 +51,7 @@ export default function HeroSectionV2() {
             height={150}
             className={`${styles.collageImage} ${styles.image3}`}
           />
-          {/* Image 4: Dark car, bottom right */}
+          
           <Image
             src="/HeroSectionV2-4.png"
             alt="Dark classic car"

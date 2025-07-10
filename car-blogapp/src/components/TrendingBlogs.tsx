@@ -12,7 +12,6 @@ interface BlogPostData {
   imageUrl: string;
 }
 
-// Sample data
 const allBlogPosts: BlogPostData[] = [
   {
     id: 'latest-car-tech',
@@ -56,7 +55,7 @@ const allBlogPosts: BlogPostData[] = [
   },
 ];
 
-// Reusable blog card component
+
 const BlogPostItem: React.FC<BlogPostData & {
   onClick?: (id: string) => void;
   isActive?: boolean;

@@ -1,0 +1,165 @@
+/* Base styles - for larger screens (desktops) */
+.mainContainer {
+  max-width: 1140px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #333;
+}
+
+.searchInput {
+  width: 96.5%; /* Adjusted width for desktop, consider if this specific % is always ideal */
+  padding: 14px 20px;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 2px solid #FC4100;
+  background-color: #fff;
+  color: #FC4100;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #0A1D56;
+  font-style: italic;
+}
+
+.searchInput:focus {
+  border-color: #0A1D56;
+  background-color: #cecdc82a;
+  transform: scale(1.02);
+}
+
+/* Ensure the placeholder color changes on focus */
+.searchInput:focus::placeholder { /* Corrected selector */
+  color: #FC4100;
+}
+
+
+.noResult {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 1rem; /* Add padding to pagination for smaller screens */
+}
+
+.pageBtn {
+  margin: 0 5px;
+  padding: 8px 14px;
+  background-color: #eaeaea;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap; /* Prevent page numbers from wrapping */
+}
+
+.activePage {
+  background-color: #0A1D56;
+  color: #fff;
+  font-weight: bold;
+}
+
+.arrowBtn {
+  padding: 8px 12px;
+  margin: 0 10px;
+  background-color: #eaeaea;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.arrowBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* --- Media Queries --- */
+
+/* For Tablets (e.g., max-width: 768px) */
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 0.8rem; /* Slightly less padding */
+    margin: 0.8rem auto;
+  }
+
+  .pageTitle {
+    font-size: 2rem; /* Smaller title */
+    margin-bottom: 2rem;
+  }
+
+  .searchInput {
+    width: 95%; /* Adjust width for tablets */
+    padding: 12px 18px; /* Slightly less padding */
+    font-size: 1rem; /* Smaller font size */
+    margin-bottom: 2rem;
+  }
+
+  .pageBtn,
+  .arrowBtn {
+    padding: 6px 10px; /* Smaller padding for pagination buttons */
+    font-size: 0.9rem;
+    margin: 0 3px; /* Reduce margin between buttons */
+  }
+
+  .arrowBtn {
+    margin: 0 8px; /* Adjust arrow button margin */
+  }
+}
+
+/* For Mobile Phones (e.g., max-width: 480px) */
+@media (max-width: 480px) {
+  .mainContainer {
+    padding: 0.5rem; /* Even less padding for small screens */
+    margin: 0.5rem auto;
+    border-radius: 4px; /* Slightly smaller border-radius */
+  }
+
+  .pageTitle {
+    font-size: 1.8rem; /* Even smaller title */
+    margin-bottom: 1.5rem;
+    text-align: center; /* Center the title for mobile */
+  }
+
+  .searchInput {
+    width: 90%; /* Further adjust width for mobile */
+    padding: 10px 15px; /* Compact padding */
+    font-size: 0.9rem; /* Smaller font */
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .pageBtn,
+  .arrowBtn {
+    padding: 5px 8px; /* Smallest padding for buttons */
+    font-size: 0.8rem;
+    margin: 0 2px; /* Minimal margin between buttons */
+  }
+
+  .arrowBtn {
+    margin: 0 5px;
+  }
+
+  /* If pagination becomes too cramped, consider wrapping or reducing button count */
+  .pagination {
+    display: flex; /* Use flexbox for pagination */
+    flex-wrap: wrap; /* Allow buttons to wrap to next line */
+    justify-content: center; /* Center buttons when wrapped */
+    gap: 5px; /* Add a small gap between buttons */
+  }
+}

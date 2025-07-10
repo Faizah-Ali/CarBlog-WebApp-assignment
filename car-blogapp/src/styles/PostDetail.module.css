@@ -1,16 +1,17 @@
 .wrapper {
   padding: 2rem;
-  max-width: 900px; /* Preserve for desktop */
-  margin-left: 350px; /* Preserve for desktop */
-  margin-right: auto; /* Ensure it stays centered if max-width is hit */
+  max-width: 900px;
+  margin: auto; /* Center for all screens */
+  box-sizing: border-box;
 }
 
 .coverImage {
-  width: 1140px; /* Preserve for desktop */
-  height: 600px; /* Preserve for desktop */
+  width: 100%; /* Responsive width */
+  height: auto; /* Let image adapt height */
+  max-height: 600px;
   border-radius: 8px;
   margin-bottom: 2rem;
-  object-fit: cover; /* Ensure image covers the area without distortion */
+  object-fit: cover;
 }
 
 .heading {
@@ -45,47 +46,41 @@
   margin: 0.4rem 0;
 }
 
+/* ----------- Responsive Adjustments ----------- */
 
-/* Responsive adjustments */
-
-/* For screens up to 1200px (adjusting for the wide image and wrapper) */
-@media (max-width: 1200px) {
+/* Tablets and below */
+@media (max-width: 1024px) {
   .wrapper {
-    max-width: 95%; /* Allow wrapper to take more width */
-    margin-left: auto; /* Center the wrapper horizontally */
-    margin-right: auto;
-    padding: 1.5rem; /* Slightly reduce padding */
-  }
-
-  .coverImage {
-    width: 100%; /* Image now takes full width of its container */
-    height: 450px; /* Adjust height for larger screens in this range */
-    margin-bottom: 1.5rem;
+    padding: 1.5rem;
   }
 
   .heading {
-    font-size: 1.8rem; /* Slightly smaller heading */
-  }
-
-  .content h2 {
-    font-size: 1.15rem; /* Adjust content heading size */
-  }
-}
-
-/* For screens up to 768px (Tablets) */
-@media (max-width: 768px) {
-  .wrapper {
-    padding: 1rem; /* Reduce padding further */
+    font-size: 1.8rem;
   }
 
   .coverImage {
-    height: 300px; /* Adjust height for tablets */
+    max-height: 450px;
+  }
+
+  .content h2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+
+  .coverImage {
+    max-height: 300px;
     margin-bottom: 1rem;
     border-radius: 6px;
   }
 
   .heading {
-    font-size: 1.6rem; /* Smaller heading */
+    font-size: 1.6rem;
     margin-bottom: 0.8rem;
   }
 
@@ -95,66 +90,55 @@
   }
 
   .content h2 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-top: 1rem;
   }
 
   .content p {
     font-size: 0.95rem;
-    margin-top: 0.4rem;
   }
 
   .content ul {
-    padding-left: 1rem; /* Reduce list indentation */
-    margin-top: 0.8rem;
+    padding-left: 1.2rem;
   }
 
   .content li {
     font-size: 0.9rem;
-    margin: 0.3rem 0;
   }
 }
 
-/* For screens up to 480px (Mobile) */
+/* Small mobile screens */
 @media (max-width: 480px) {
   .wrapper {
-    padding: 0.75rem; /* Minimal padding for mobile */
-    margin: 0 auto; /* Ensure it's centered */
+    padding: 0.8rem;
   }
 
   .coverImage {
-    height: 200px; /* Smaller height for mobile */
-    margin-bottom: 0.8rem;
+    max-height: 200px;
     border-radius: 4px;
   }
 
   .heading {
-    font-size: 1.4rem; /* Even smaller heading */
-    margin-bottom: 0.6rem;
+    font-size: 1.4rem;
   }
 
   .meta {
     font-size: 0.8rem;
-    margin-bottom: 0.8rem;
   }
 
   .content h2 {
     font-size: 1rem;
-    margin-top: 0.8rem;
   }
 
   .content p {
     font-size: 0.88rem;
-    margin-top: 0.3rem;
   }
 
   .content ul {
-    padding-left: 0.8rem;
-    margin-top: 0.6rem;
+    padding-left: 1rem;
   }
 
   .content li {
     font-size: 0.85rem;
-    margin: 0.2rem 0;
   }
 }

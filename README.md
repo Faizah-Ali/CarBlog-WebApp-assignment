@@ -89,8 +89,7 @@ car-blogapp/
     <li>Trending blogs & testimonials</li>
     <li>Category cards</li>
   </ul>
-  <img src="/HeroSection.png" alt="Hero Section"/>
-
+ 
   <h3>✅ Blog Section</h3>
   <ul>
     <li>Page: <code>/blogs</code></li>
@@ -118,7 +117,7 @@ car-blogapp/
     <li>Modal includes: image, name, and <code>moreInfo</code> content</li>
     <li>Close button to dismiss modal</li>
   </ul>
-  <img src="/CategorySection1.png" alt="Category Card Example"/>
+
 
   <h3>✅ Footer Section</h3>
   <ul>

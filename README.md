@@ -55,11 +55,19 @@ car-blogapp/
 │   │   └── TrendingBlogs.tsx
 │   │
 │   ├── styles/
-│       ├── Header.module.css
-│       ├── Footer.module.css
-│       ├── category.module.css
-│       ├── contact.module.css
-│       └── PostDetail.module.css
+│       ├── about.module.css
+│       ├── BlogListCard.module.css
+│       ├── CarPostCard.module.css
+│       ├── Category.module.css
+│       └── Contact.module.css
+|       └── Footer.module.css
+|       └── Header.module.css
+|       └── HeroSection.module.css
+|       └── HeroSectionV2.module.css
+|       └── layout.module.css
+|       └── PostDetail.module.css
+|       └── Testimonial.module.css
+|       └── TrendingBlogs.module.css
 │
 ├── .gitignore
 ├── eslint.config.mjs

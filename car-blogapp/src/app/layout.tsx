@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'CarTech Blog',
+  title: 'Regal Rides',
   description: 'Explore the latest in car technology, reviews, and tips.',
 }
 

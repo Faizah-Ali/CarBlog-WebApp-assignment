@@ -3,7 +3,17 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/category.module.css';
 import Image from 'next/image';
-const categories = [
+
+// Define an interface for your category objects
+interface Category {
+  name: string;
+  desc: string;
+  image: string;
+  details: string;
+  moreInfo: string;
+}
+
+const categories: Category[] = [
   {
     name: 'Car Reviews',
     desc: 'Get in-depth analysis and expert opinions on the latest models and classic beauties.',
@@ -42,11 +52,12 @@ const categories = [
   }
 ];
 
-
 export default function CategorySection() {
-  const [selected, setSelected] = useState<any>(null);
+  // Use the Category type for the 'selected' state. It can be null initially.
+  const [selected, setSelected] = useState<Category | null>(null);
 
-  const openModal = (cat: any) => {
+  // Use the Category type for the 'cat' parameter
+  const openModal = (cat: Category) => {
     setSelected(cat);
     document.body.style.overflow = 'hidden'; // Lock scroll
   };
@@ -83,27 +94,26 @@ export default function CategorySection() {
           </div>
         ))}
       </div>
-{selected && (
-  <div className={styles.modalOverlay}>
-    <div className={styles.modalContent}>
-      <button className={styles.closeButton} onClick={closeModal}>
-        ×
-      </button>
-      <Image
-        src={selected.image}
-        alt={selected.name}
-        width={200}
-        height={200}
-        className={styles.modalImage}
-      />
-      <h2>{selected.name}</h2>
-      <p>{selected.details}</p>
-      <hr style={{ margin: '1rem 0', borderColor: '#fc4100' }} />
-      <p style={{ fontSize: '0.95rem', color: '#333' }}>{selected.moreInfo}</p>
-    </div>
-  </div>
-)}
-
+      {selected && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <button className={styles.closeButton} onClick={closeModal}>
+              ×
+            </button>
+            <Image
+              src={selected.image}
+              alt={selected.name}
+              width={200}
+              height={200}
+              className={styles.modalImage}
+            />
+            <h2>{selected.name}</h2>
+            <p>{selected.details}</p>
+            <hr style={{ margin: '1rem 0', borderColor: '#fc4100' }} />
+            <p style={{ fontSize: '0.95rem', color: '#333' }}>{selected.moreInfo}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
